@@ -1,0 +1,8 @@
+build
+build.log
+tmp
+._*
+.DS_Store
+.settings
+*.kpf
+.project
