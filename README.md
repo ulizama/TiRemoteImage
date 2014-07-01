@@ -68,7 +68,11 @@ the image.
 - `destroy()` - It's highly recommended that you call this method before disposing
 from the object to prevent memory leaks.
 - `viewProxy` - Returns the actual view that should be added to other views.
-
+- `gc()` - Calls the garbage collector to clean any expired images. Upon initialization
+the garbage collector is called, but if you required to call it more frequently you
+can do so.
+- `wipeCache()` - Clear everything on the cache, regardless if it has expired or
+not.
 
 ### viewProxy
 
@@ -82,6 +86,15 @@ method, which will return the actual `ImageView`.
     });
 
     window.add( image.viewProxy );
+
+
+## FileLoader Configuration
+
+Image caching is made using [TiCachedImages][1] which is found on [`lib/file_loader.js`][2].
+Inside this file you can configure some settings like cache location as well as
+the cache expiration settings.
+
+[2]: https://github.com/ulizama/TiRemoteImage/blob/master/Resources/lib/file_loader.js
 
 
 ## License

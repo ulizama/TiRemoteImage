@@ -11,6 +11,9 @@ var _ = require('/lib/underscore'),
   Component = require('/lib/component'),
 	FileLoader = require('/lib/file_loader');
 
+//Call garbage collection on initialization
+FileLoader.gc;
+
 function RemoteImage( params ) {
 
 	params = _.extend({
@@ -159,10 +162,19 @@ function RemoteImage( params ) {
 		myImage.load();
 	}
 
+	myImage.gc = function(){
+		FileLoader.gc;
+	};
+
+	myImage.wipeCache = function(){
+		FileLoader.gc(true);
+	};
+
 	if( params.autoload ){
 		//If we are to autoload the image, call the load function
 		myImage.load();
 	}
+
 
 	return myImage;
 
